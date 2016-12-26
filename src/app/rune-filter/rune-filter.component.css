@@ -1,0 +1,17 @@
+md-card-header {
+    margin: 0 -8px;
+}
+
+md-card-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+md-button-toggle-group {
+    flex-wrap: wrap;
+}
+
+.filter {
+    margin-right: 30px;
+}

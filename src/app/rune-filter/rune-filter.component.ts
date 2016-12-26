@@ -11,6 +11,10 @@ export class RuneFilterComponent implements OnInit {
   pri_list = ['깡체', '체력', '깡공', '공격력', '깡방', '방어력', '공속', '치확', '치피', '효저', '효적'];
   slot_list = ['1', '2', '3', '4', '5', '6'];
 
+  filter = {
+      
+  }
+
   constructor() { }
 
   ngOnInit() {

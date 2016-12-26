@@ -1,14 +1,36 @@
 <md-card>
   <md-card-header>
-    <md-card-title>Filter</md-card-title>
+    <md-card-title>
+      <h3>필터</h3>
+    </md-card-title>
   </md-card-header>
-  <div class="">세트</div>
   <md-card-content>
-    <md-button-toggle-group multiple>
-      <md-button-toggle *ngFor="let set of set_list">{{set}}</md-button-toggle>
-    </md-button-toggle-group>
+    <div class="filter">
+      <p>세트</p>
+      <md-button-toggle-group multiple>
+        <md-button-toggle *ngFor="let set of set_list">{{set}}</md-button-toggle>
+      </md-button-toggle-group>
+    </div>
+    <div class="filter">
+      <p>주옵</p>
+      <md-button-toggle-group multiple>
+        <md-button-toggle *ngFor="let pri of pri_list">{{pri}}</md-button-toggle>
+      </md-button-toggle-group>
+    </div>
+    <div class="filter">
+      <p>슬롯</p>
+      <md-button-toggle-group multiple>
+        <md-button-toggle *ngFor="let slot of slot_list">{{slot}}</md-button-toggle>
+      </md-button-toggle-group>
+    </div>
+    <div class="filter">
+      <p>유효옵</p>
+      <md-button-toggle-group multiple>
+        <md-button-toggle *ngFor="let eff of eff_list">{{eff}}</md-button-toggle>
+      </md-button-toggle-group>
+    </div>
   </md-card-content>
   <md-card-actions align="end">
-    <button md-raised-button>검색</button>
+    <button md-raised-button color="accent">검색</button>
   </md-card-actions>
 </md-card>
