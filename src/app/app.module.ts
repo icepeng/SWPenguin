@@ -12,7 +12,7 @@ import { RuneFilterComponent } from './rune-filter/rune-filter.component';
   ],
   imports: [
     BrowserModule,
-    CoreModule,
+    CoreModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
