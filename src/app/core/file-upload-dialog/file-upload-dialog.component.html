@@ -1,6 +1,9 @@
-<h1 md-dialog-title>Dialog</h1>
-<md-dialog-content>What would you like to do?</md-dialog-content>
-<md-dialog-actions>
-  <button md-button (click)="dialogRef.close('Option 1')">Option 1</button>
-  <button md-button (click)="dialogRef.close('Option 2')">Option 2</button>
+<h1 md-dialog-title>File Upload</h1>
+<md-dialog-content>
+    <form>
+        <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".json">
+    </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-button (click)="fileRead()">확인</button>
 </md-dialog-actions>
