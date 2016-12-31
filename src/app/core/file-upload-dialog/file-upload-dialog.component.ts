@@ -9,24 +9,26 @@ import { RuneService } from '../rune.service';
 })
 export class FileUploadDialogComponent implements OnInit {
 
-  listner: any;
+  listener: any;
 
-  constructor(public dialogRef: MdDialogRef<FileUploadDialogComponent>) { }
+  constructor(
+    public dialogRef: MdDialogRef<FileUploadDialogComponent>,
+    public runeService: RuneService
+  ) { }
 
   ngOnInit() {
   }
 
   fileChange(event): void {
-      this.listner = event.target;
+    this.listener = event.target;
   }
 
   fileRead(): void {
-    var file: File = this.listner.files[0];
+    var file: File = this.listener.files[0];
     var myReader: FileReader = new FileReader();
 
     myReader.onloadend = () => {
-      // you can perform an action with readed data here
-      console.log(JSON.parse(myReader.result));
+      this.runeService.import(JSON.parse(myReader.result));
       this.dialogRef.close('success');
     }
 

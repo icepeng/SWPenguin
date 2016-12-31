@@ -9,6 +9,6 @@
         SWPenguin은 SWProxy에서 추출된 [UserID].json, [UserID]-swarfarm.json을 지원하며, [UserID]-optimizer.json은 지원하지 않습니다.
     </p>
 </md-dialog-content>
-<md-dialog-actions align="end">
-  <button md-button (click)="fileRead()">확인</button>
+<md-dialog-actions>
+  <button md-raised-button [disabled]="!listener" (click)="fileRead()">확인</button>
 </md-dialog-actions>
