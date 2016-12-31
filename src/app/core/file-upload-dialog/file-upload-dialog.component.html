@@ -3,6 +3,11 @@
     <form>
         <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".json">
     </form>
+    <p>
+        <a href="https://drive.google.com/file/d/0B3AHhaOaO_z7bjg2c1UzSDdRTmc/view">Google Drive</a> 에서 윈도우용 SWProxy를 다운받을 수 있습니다.<br>
+        SWProxy 사용법은 <a href="https://www.youtube.com/watch?v=w7pZ55QlvdE">YouTube 동영상</a>을 참고하세요. (영어 주의)<br>
+        SWPenguin은 SWProxy에서 추출된 [UserID].json, [UserID]-swarfarm.json을 지원하며, [UserID]-optimizer.json은 지원하지 않습니다.
+    </p>
 </md-dialog-content>
 <md-dialog-actions align="end">
   <button md-button (click)="fileRead()">확인</button>
