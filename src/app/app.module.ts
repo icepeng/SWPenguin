@@ -4,11 +4,13 @@ import { CoreModule } from './core/core.module'
 
 import { AppComponent } from './app.component';
 import { RuneFilterComponent } from './rune-filter/rune-filter.component';
+import { RuneListComponent } from './rune-list/rune-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RuneFilterComponent
+    RuneFilterComponent,
+    RuneListComponent
   ],
   imports: [
     BrowserModule,
