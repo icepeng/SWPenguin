@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { NavComponent } from './nav/nav.component';
 import { FabComponent } from './fab/fab.component';
 import { FileUploadDialogComponent } from './file-upload-dialog/file-upload-dialog.component';
+import { RuneService } from './rune.service';
 
 @NgModule({
   imports: [
@@ -18,6 +19,9 @@ import { FileUploadDialogComponent } from './file-upload-dialog/file-upload-dial
     NavComponent,
     FabComponent,
     FileUploadDialogComponent
+  ],
+  providers: [
+    RuneService
   ],
   entryComponents: [
     FileUploadDialogComponent
@@ -34,7 +38,10 @@ import { FileUploadDialogComponent } from './file-upload-dialog/file-upload-dial
 export class CoreModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: CoreModule
+      ngModule: CoreModule,
+      providers: [
+          RuneService
+      ]
     };
   }
 }

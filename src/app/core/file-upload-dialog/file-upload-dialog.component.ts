@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
+import { RuneService } from '../rune.service';
 
 @Component({
   selector: 'app-file-upload-dialog',
