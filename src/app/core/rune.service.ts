@@ -24,10 +24,6 @@ export class RuneService {
     })
   }
 
-  get() {
-    return this.runes;
-  }
-
 }
 
 function pushRune(data): Promise<Rune[]> {
