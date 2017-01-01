@@ -10,6 +10,16 @@ import { Rune } from '../core/rune';
 export class RuneListComponent implements OnInit {
 
   runes: Rune[];
+  items: string[];
+  headers = [
+    {name: "세트", field: "set_id"},
+    {name: "등급", field: "class"},
+    {name: "슬롯", field: "slot_no"},
+    {name: "강화", field: "upgrade_curr"},
+    {name: "주옵션", field: "pri_eff"},
+    {name: "접두옵션", field: "prefix_eff"},
+    {name: "부옵션", field: "sec_eff"},
+  ]
 
   constructor(public runeService: RuneService) {
   }

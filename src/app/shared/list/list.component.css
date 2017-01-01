@@ -1,0 +1,35 @@
+table {
+  width: 100%;
+  display: table;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+tbody {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgb(13%, 13%, 13%);
+}
+
+thead {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgb(46%, 46%, 46%);
+}
+
+tr {
+  height: 48px;
+  border-bottom: 1px solid rgb(88%, 88%, 88%);
+}
+
+tbody>tr:hover {
+  background-color: #EEEEEE;
+}
+
+td {
+  padding: 0 24px;
+}
+
+td + td {
+  padding-right: 32px;
+}
