@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Rune } from './rune';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { MonsterIdName } from './monster-id-name';
 
 const set_id_table = ['X', '활력', '수호', '신속', '칼날', '격노', '집중', '인내', '맹공', 'X', '절망', '흡혈', 'X', '폭주', '응보', '의지', '보호', '반격', '파괴', '투지', '결의', '고양', '명중', '근성'];
 const eff_table = ['X', '깡체', '체퍼', '깡공', '공퍼', '깡방', '방퍼', 'X', '공속', '치확', '치피', '효저', '효적'];
@@ -27,7 +28,7 @@ export class RuneService {
     });
   }
 
-  import(data) {
+  import(data): void {
     pushRune(data).then(list => {
       this.dataStore.runes = list;
       this._runes.next(Object.assign({}, this.dataStore).runes);
@@ -40,11 +41,11 @@ function pushRune(data): Promise<Rune[]> {
   return new Promise((resolve, reject) => {
     let list = [];
     for (let rune of data.runes) {
-      list.push(assignRune(rune));
+      list.push(assignRune(rune, 0));
     }
     for (let unit of data.unit_list) {
       for (let rune of unit.runes) {
-        list.push(assignRune(rune));
+        list.push(assignRune(rune, unit.unit_master_id));
       }
     }
     resolve(list);
@@ -53,6 +54,7 @@ function pushRune(data): Promise<Rune[]> {
 
 function parseRune(rune) {
   return {
+    occupied_name: MonsterIdName[`n${rune.occupied_master_id}`],
     set_id: set_id_table[rune.set_id],
     class: rune.class,
     slot_no: rune.slot_no,
@@ -66,10 +68,11 @@ function parseRune(rune) {
   };
 }
 
-function assignRune(rune) {
+function assignRune(rune, id) {
   return {
     id: rune.rune_id,
     occupied_id: rune.occupied_id,
+    occupied_master_id: id,
     class: rune.class,
     pri_eff: rune.pri_eff,
     prefix_eff: rune.prefix_eff,

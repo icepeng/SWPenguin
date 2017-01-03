@@ -12,6 +12,7 @@ export class RuneListComponent implements OnInit {
   runes: Rune[];
   items: any;
   headers = [
+    {name: "장착", field: "occupied_name"},
     {name: "세트", field: "set_id"},
     {name: "등급", field: "class"},
     {name: "슬롯", field: "slot_no"},
