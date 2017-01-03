@@ -30,6 +30,10 @@ td {
   padding: 0 24px;
 }
 
-td + td {
+td+td {
   padding-right: 32px;
+}
+
+.table-responsive {
+  overflow-x: auto;
 }
