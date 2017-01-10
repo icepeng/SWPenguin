@@ -1,22 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CoreModule } from './core/core.module';
-import { SharedModule } from './shared/shared.module';
+import { AppRoutingModule } from './app-routing.module';
+import { RuneModule } from './rune/rune.module';
 
 import { AppComponent } from './app.component';
-import { RuneFilterComponent } from './rune-filter/rune-filter.component';
-import { RuneListComponent } from './rune-list/rune-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RuneFilterComponent,
-    RuneListComponent
   ],
   imports: [
     BrowserModule,
     CoreModule.forRoot(),
-    SharedModule
+    AppRoutingModule,
+    RuneModule
   ],
   providers: [],
   bootstrap: [AppComponent]
