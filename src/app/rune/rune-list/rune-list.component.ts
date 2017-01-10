@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { RuneService } from '../../core/rune.service';
 import { Rune } from '../../core/rune';
+import { RuneFilterComponent } from '../rune-filter/rune-filter.component';
 
 @Component({
   selector: 'app-rune-list',
   templateUrl: './rune-list.component.html',
   styleUrls: ['./rune-list.component.css']
 })
-export class RuneListComponent implements OnInit {
+export class RuneListComponent implements OnInit, AfterViewInit {
+  @ViewChild(RuneFilterComponent)
+  filter: RuneFilterComponent;
 
   runes: Rune[];
   items: any;
@@ -38,6 +41,12 @@ export class RuneListComponent implements OnInit {
       }
       this.items = this.parsedRunes;
     });
+  }
+
+  ngAfterViewInit() {
+    this.filter.subject.subscribe(filters => {
+      console.log(filters);
+    })
   }
 
 }
