@@ -8,25 +8,25 @@
     <div class="filter">
       <p>세트</p>
       <md-button-toggle-group multiple>
-        <md-button-toggle (click)="toggleFilter('set', i)" *ngFor="let set of set_list; let i = index;">{{set}}</md-button-toggle>
+        <md-button-toggle (click)="toggleFilter('set', i); false" [checked]="filter['set'][i]" *ngFor="let set of setList; let i = index;">{{setTable[set]}}</md-button-toggle>
       </md-button-toggle-group>
     </div>
     <div class="filter">
       <p>주옵</p>
       <md-button-toggle-group multiple>
-        <md-button-toggle (click)="toggleFilter('set', i)" *ngFor="let pri of pri_list; let i = index;">{{pri}}</md-button-toggle>
+        <md-button-toggle (click)="toggleFilter('pri', i); false" [checked]="filter['pri'][i]" *ngFor="let pri of priList; let i = index;">{{effTable[pri]}}</md-button-toggle>
       </md-button-toggle-group>
     </div>
     <div class="filter">
       <p>슬롯</p>
       <md-button-toggle-group multiple>
-        <md-button-toggle (click)="toggleFilter('set', i)" *ngFor="let slot of slot_list; let i = index;">{{slot}}</md-button-toggle>
+        <md-button-toggle (click)="toggleFilter('slot', i); false" [checked]="filter['slot'][i]" *ngFor="let slot of slotList; let i = index;">{{slot}}</md-button-toggle>
       </md-button-toggle-group>
     </div>
     <div class="filter">
       <p>유효옵</p>
       <md-button-toggle-group multiple>
-        <md-button-toggle (click)="toggleFilter('set', i)" *ngFor="let eff of eff_list; let i = index;">{{eff}}</md-button-toggle>
+        <md-button-toggle (click)="toggleFilter('eff', i); false" [checked]="filter['eff'][i]" *ngFor="let eff of effList; let i = index;">{{effTable[eff]}}</md-button-toggle>
       </md-button-toggle-group>
     </div>
   </md-card-content>
