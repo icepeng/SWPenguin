@@ -5,9 +5,6 @@ import { MaterialModule } from '@angular/material';
 
 import { RuneFilterComponent } from './rune-filter/rune-filter.component';
 import { RuneListComponent } from './rune-list/rune-list.component';
-import { RuneComponent } from './rune.component';
-
-import { RuneListService } from './rune-list.service';
 
 @NgModule({
   imports: [
@@ -18,14 +15,10 @@ import { RuneListService } from './rune-list.service';
   declarations: [
     RuneFilterComponent,
     RuneListComponent,
-    RuneComponent,
   ],
   exports: [
     RuneFilterComponent,
     RuneListComponent
-  ],
-  providers: [
-    RuneListService
   ]
 })
 export class RuneModule { }
