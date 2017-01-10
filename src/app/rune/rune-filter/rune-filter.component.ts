@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RuneListService } from '../rune-list.service';
+import { RuneService } from '../../core/rune.service';
+import { Rune, RuneSet, RuneEffect } from '../../core/rune';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-rune-filter',
@@ -7,21 +9,38 @@ import { RuneListService } from '../rune-list.service';
   styleUrls: ['./rune-filter.component.css']
 })
 export class RuneFilterComponent implements OnInit {
-  eff_list = ['체력', '공격력', '방어력', '공속', '치확', '치피', '효적', '효저'];
-  set_list = ['활력', '수호', '신속', '칼날', '격노', '집중', '인내', '맹공', '절망', '흡혈', '폭주', '응보', '의지', '보호', '반격', '파괴', '투지', '결의', '고양', '명중', '근성'];
-  pri_list = ['깡체', '체력', '깡공', '공격력', '깡방', '방어력', '공속', '치확', '치피', '효저', '효적'];
-  slot_list = ['1', '2', '3', '4', '5', '6'];
+  setList = [RuneSet.Energy, RuneSet.Guard, RuneSet.Swift, RuneSet.Blade, RuneSet.Rage, RuneSet.Focus, RuneSet.Endure, RuneSet.Fatal, RuneSet.Despair, RuneSet.Vampire, RuneSet.Violent, RuneSet.Nemesis, RuneSet.Will, RuneSet.Shield, RuneSet.Revenge, RuneSet.Destroy, RuneSet.Fight, RuneSet.Determination, RuneSet.Enhance, RuneSet.Accuracy, RuneSet.Tolerance];
+  effList = [RuneEffect.ScaleHP, RuneEffect.ScaleATK, RuneEffect.ScaleDEF, RuneEffect.SPD, RuneEffect.CRate, RuneEffect.CDmg, RuneEffect.ACC, RuneEffect.RES];
+  priList = [RuneEffect.FlatHP, RuneEffect.ScaleHP, RuneEffect.FlatATK, RuneEffect.ScaleATK, RuneEffect.FlatDEF, RuneEffect.ScaleDEF, RuneEffect.SPD, RuneEffect.CRate, RuneEffect.CDmg, RuneEffect.ACC, RuneEffect.RES];
+  slotList = [1, 2, 3, 4, 5, 6];
+  setTable: string[];
+  effTable: string[];
+  filter: {
+    'eff': boolean[],
+    'set': boolean[],
+    'pri': boolean[],
+    'slot': boolean[]
+  };
+  subject = new Subject<any>();
 
-  constructor(
-    private runeListService: RuneListService
-  ) { }
+  constructor(public runeService: RuneService) {
+    this.setTable = runeService.setTable;
+    this.effTable = runeService.effTable;
+    this.filter = {
+      'eff': Array(this.effList.length).fill(true),
+      'set': Array(this.setList.length).fill(true),
+      'pri': Array(this.priList.length).fill(true),
+      'slot': Array(this.slotList.length).fill(true),
+    };
+  }
 
   ngOnInit() {
 
   }
 
   toggleFilter(type, value) {
-    this.runeListService.filter[type][value] = !this.runeListService.filter[type][value];
+    this.filter[type][value] = !this.filter[type][value];
+    this.subject.next(this.filter);
   }
 
 }
