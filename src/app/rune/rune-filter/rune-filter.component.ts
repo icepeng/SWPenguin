@@ -27,10 +27,10 @@ export class RuneFilterComponent implements OnInit {
     this.setTable = runeService.setTable;
     this.effTable = runeService.effTable;
     this.filter = {
-      'eff': Array(this.effList.length).fill(true),
-      'set': Array(this.setList.length).fill(true),
-      'pri': Array(this.priList.length).fill(true),
-      'slot': Array(this.slotList.length).fill(true),
+      'eff': Array(13).fill(true),
+      'set': Array(25).fill(true),
+      'pri': Array(13).fill(true),
+      'slot': Array(7).fill(true),
     };
   }
 

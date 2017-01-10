@@ -35,18 +35,26 @@ export class RuneListComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.runeService.runes.subscribe(runes => {
       this.runes = runes;
-      this.parsedRunes = [];
-      for (let rune of runes) {
-        this.parsedRunes.push(this.runeService.parseRune(rune));
-      }
-      this.items = this.parsedRunes;
+      this.pushRunes(runes);
     });
   }
 
   ngAfterViewInit() {
     this.filter.subject.subscribe(filters => {
-      console.log(filters);
-    })
+      this.pushRunes(
+        this.runes.filter(rune => {
+          return filters['pri'][rune.pri_eff[0]] && filters['slot'][rune.slot_no] && filters['set'][rune.set_id];
+        })
+      );
+    });
+  }
+
+  pushRunes(runes: Rune[]) {
+    this.parsedRunes = [];
+    for (let rune of runes) {
+      this.parsedRunes.push(this.runeService.parseRune(rune));
+    }
+    this.items = this.parsedRunes;
   }
 
 }
