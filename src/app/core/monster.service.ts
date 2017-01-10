@@ -4,23 +4,23 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
-export class RuneService {
+export class MonsterService {
   monsters: Observable<Monster[]>;
-  _runes: BehaviorSubject<Monster[]>;
+  _monsters: BehaviorSubject<Monster[]>;
   dataStore: {
     monsters: Monster[];
   }
 
   constructor() {
     this.dataStore = { monsters: [] };
-    this._runes = <BehaviorSubject<Monster[]>>new BehaviorSubject([]);
-    this.monsters = this._runes.asObservable();
+    this._monsters = <BehaviorSubject<Monster[]>>new BehaviorSubject([]);
+    this.monsters = this._monsters.asObservable();
   }
 
   import(data) {
-    pushRune(data).then(list => {
+    pushMonster(data).then(list => {
       this.dataStore.monsters = list;
-      this._runes.next(Object.assign({}, this.dataStore).monsters);
+      this._monsters.next(Object.assign({}, this.dataStore).monsters);
     })
   }
 
@@ -30,7 +30,7 @@ export class RuneService {
 
 }
 
-function pushRune(data): Promise<Monster[]> {
+function pushMonster(data): Promise<Monster[]> {
   return new Promise((resolve, reject) => {
     let list = [];
     for (let monster of data.unit_list) {
